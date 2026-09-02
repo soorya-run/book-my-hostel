@@ -1,0 +1,1666 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #020817;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body {
+    background-color: #020817;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.045) 1px,
+            transparent 1px
+        );
+
+    background-size: 64px 64px;
+}
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.glow-one {
+    top: 300px;
+    left: -250px;
+    background: rgba(0, 180, 255, 0.13);
+}
+
+.glow-two {
+    top: 50px;
+    right: -200px;
+    background: rgba(40, 100, 255, 0.15);
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    background: rgba(2, 8, 23, 0.78);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.nav-container {
+    width: min(1210px, 92%);
+    height: 92px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.logo:hover {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 14px rgba(30, 120, 255, 0.7));
+}
+
+.logo-image {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #1689ff,
+            #061a38
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    box-shadow:
+        0 0 15px rgba(0, 115, 255, 0.35);
+
+    transition: 0.35s ease;
+}
+
+.logo:hover .logo-image {
+    transform: rotate(-8deg);
+    box-shadow:
+        0 0 30px rgba(0, 130, 255, 0.7);
+}
+
+.logo-house {
+    font-size: 19px;
+}
+
+.logo-text-small {
+    display: none;
+}
+
+.brand-name {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+
+    margin-left: auto;
+    margin-right: 250px;
+}
+
+.nav-link {
+    position: relative;
+
+    color: #c9d5e7;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    padding: 10px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+/* Underline animation */
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 2px;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        #1677ff,
+        #00c6ff
+    );
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition:
+        transform 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+/* =========================================================
+   AUTH BUTTONS
+========================================================= */
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.login-btn {
+    border: none;
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    padding: 12px 8px;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: scale(1.08);
+    color: #4da3ff;
+}
+
+
+.signup-btn {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 15px;
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        135deg,
+        #1d6cff,
+        #247ff5
+    );
+
+    box-shadow:
+        0 10px 25px rgba(0, 91, 255, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.signup-btn:hover {
+    transform: scale(1.08) translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(0, 105, 255, 0.5);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: 92px;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-container {
+    width: min(1210px, 92%);
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+    padding-top: 15px;
+
+    animation:
+        heroContent 1s ease forwards;
+}
+
+@keyframes heroContent {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   TOP BADGE
+========================================================= */
+
+.top-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 15px;
+
+    border: 1px solid rgba(35, 126, 255, 0.55);
+
+    border-radius: 30px;
+
+    background: rgba(10, 47, 92, 0.22);
+
+    color: #7db9ff;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 110, 255, 0.04);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.top-badge:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(0, 120, 255, 0.2);
+}
+
+.badge-icon {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title {
+    font-size: clamp(48px, 5vw, 62px);
+
+    line-height: 1.2;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 800;
+
+    margin-bottom: 28px;
+}
+
+.gradient-text {
+    background:
+        linear-gradient(
+            100deg,
+            #1974ff,
+            #00b7e9
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% 200%;
+
+    animation:
+        gradientMove 4s ease infinite;
+}
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+    max-width: 600px;
+
+    color: #8ea5c4;
+
+    font-size: 17px;
+
+    line-height: 1.72;
+
+    margin-bottom: 32px;
+}
+
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 47px;
+}
+
+
+/* Primary */
+
+.primary-btn {
+    border: none;
+
+    padding: 17px 31px;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1468ff,
+            #2883ff
+        );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 102, 255, 0.3);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.primary-btn:hover {
+    transform: scale(1.08) translateY(-3px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 110, 255, 0.5);
+}
+
+.primary-btn i {
+    transition: transform 0.3s ease;
+}
+
+.primary-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* Secondary */
+
+.secondary-btn {
+    padding: 16px 30px;
+
+    border-radius: 16px;
+
+    border: 2px solid #273957;
+
+    background: rgba(9, 18, 38, 0.6);
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.secondary-btn:hover {
+    transform: scale(1.08) translateY(-3px);
+
+    border-color: #3686ff;
+
+    background: rgba(25, 85, 170, 0.15);
+
+    box-shadow:
+        0 12px 30px rgba(0, 110, 255, 0.2);
+}
+
+.secondary-btn i {
+    color: #ffffff;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats-container {
+    display: flex;
+
+    gap: 58px;
+}
+
+.stat {
+    min-width: 90px;
+}
+
+.stat-number {
+    font-size: 23px;
+
+    font-weight: 800;
+
+    margin-bottom: 5px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+.star {
+    color: #ffc400;
+    font-size: 17px;
+}
+
+.stat-label {
+    color: #7890ad;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RIGHT HERO VISUAL
+========================================================= */
+
+.hero-visual {
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        visualAppear 1.1s ease forwards;
+}
+
+@keyframes visualAppear {
+
+    from {
+        opacity: 0;
+        transform: translateX(45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* =========================================================
+   HOSTEL CARD
+========================================================= */
+
+.hostel-card {
+    width: 585px;
+
+    max-width: 100%;
+
+    padding: 24px;
+
+    border-radius: 23px;
+
+    background:
+        rgba(7, 21, 40, 0.88);
+
+    border: 1px solid rgba(94, 126, 165, 0.28);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.35),
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.03);
+
+    animation:
+        floatingCard 4s ease-in-out infinite;
+}
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-13px);
+    }
+
+}
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+.search-box {
+    height: 64px;
+
+    border-radius: 17px;
+
+    background:
+        #18283e;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 15px 0 18px;
+
+    margin-bottom: 24px;
+
+    border: 1px solid transparent;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color: rgba(42, 126, 255, 0.6);
+
+    box-shadow:
+        0 0 25px rgba(0, 110, 255, 0.12);
+}
+
+.search-icon {
+    color: #90a6c2;
+
+    margin-right: 15px;
+
+    font-size: 17px;
+}
+
+.search-box input {
+    flex: 1;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 15px;
+}
+
+.search-box input::placeholder {
+    color: #71859f;
+}
+
+.search-button {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #2379ff;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.search-button:hover {
+    transform: scale(1.15);
+
+    box-shadow:
+        0 0 20px rgba(35, 121, 255, 0.6);
+}
+
+
+/* =========================================================
+   HOSTEL ITEMS
+========================================================= */
+
+.hostel-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.hostel-item {
+    min-height: 96px;
+
+    padding: 15px 17px;
+
+    border-radius: 17px;
+
+    background:
+        #192a42;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hostel-item:hover {
+    transform: translateX(7px);
+
+    background: #203551;
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Hostel icon */
+
+.hostel-icon {
+    width: 64px;
+    height: 64px;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #113a58,
+            #0b5068
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    flex-shrink: 0;
+}
+
+.hostel-icon.building {
+    background:
+        linear-gradient(
+            135deg,
+            #133a58,
+            #14505d
+        );
+}
+
+
+/* Hostel information */
+
+.hostel-info {
+    flex: 1;
+}
+
+.hostel-info h3 {
+    font-size: 16px;
+
+    margin-bottom: 7px;
+
+    font-weight: 700;
+}
+
+.hostel-info p {
+    color: #8094ad;
+
+    font-size: 13px;
+}
+
+.hostel-info p i {
+    font-size: 11px;
+    margin-right: 4px;
+}
+
+
+/* Price */
+
+.hostel-price {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 7px;
+}
+
+.hostel-price strong {
+    color: #76b8ff;
+
+    font-size: 15px;
+}
+
+.hostel-price span {
+    font-size: 13px;
+
+    color: #ffffff;
+}
+
+.hostel-price i {
+    color: #ffc400;
+    margin-right: 3px;
+}
+
+
+/* Third card */
+
+.extra-hostel {
+    display: none;
+}
+
+
+/* =========================================================
+   FLOATING BADGES
+========================================================= */
+
+.floating-badge {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 17px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(27, 43, 65, 0.94);
+
+    border: 1px solid rgba(118, 144, 174, 0.2);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+
+    z-index: 5;
+}
+
+.floating-badge strong {
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 3px;
+}
+
+.floating-badge span {
+    display: block;
+
+    color: #86a0be;
+
+    font-size: 11px;
+}
+
+.verified-badge {
+    top: 40px;
+    right: -25px;
+
+    animation:
+        badgeFloat 3.5s ease-in-out infinite;
+}
+
+.location-badge {
+    bottom: 20px;
+    left: -25px;
+
+    animation:
+        badgeFloat 4s ease-in-out infinite reverse;
+}
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+}
+
+.badge-check {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 190, 125, 0.18);
+
+    color: #00e39a;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+.location-icon {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background: rgba(42, 121, 255, 0.18);
+
+    color: #67aaff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================================
+   ABOUT / FEATURES
+========================================================= */
+
+.simple-section {
+    min-height: 600px;
+
+    padding: 110px 0;
+
+    display: flex;
+
+    align-items: center;
+}
+
+.section-container {
+    width: min(1100px, 90%);
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.section-label {
+    color: #3d91ff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.section-container h2 {
+    font-size: clamp(34px, 4vw, 48px);
+
+    margin: 18px auto;
+
+    max-width: 800px;
+}
+
+.section-container > p {
+    max-width: 720px;
+
+    margin: auto;
+
+    color: #8da1bd;
+
+    line-height: 1.8;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   FEATURE GRID
+========================================================= */
+
+.feature-grid {
+    margin-top: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 35px 25px;
+
+    border-radius: 20px;
+
+    background: rgba(13, 29, 50, 0.7);
+
+    border: 1px solid rgba(100, 135, 175, 0.16);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+
+    border-color:
+        rgba(41, 128, 255, 0.5);
+
+    box-shadow:
+        0 20px 50px rgba(0, 100, 255, 0.12);
+}
+
+.feature-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: auto auto 20px;
+
+    border-radius: 15px;
+
+    background: rgba(34, 120, 255, 0.15);
+
+    color: #4d9aff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+.feature-card h3 {
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: #8297b2;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.7);
+
+    backdrop-filter: blur(8px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 2000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.modal {
+    width: min(420px, 90%);
+
+    padding: 38px;
+
+    border-radius: 24px;
+
+    background:
+        #0c1b30;
+
+    border:
+        1px solid rgba(87, 129, 180, 0.25);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.5);
+
+    position: relative;
+
+    transform:
+        scale(0.8)
+        translateY(30px);
+
+    transition:
+        transform 0.35s ease;
+}
+
+.modal-overlay.active .modal {
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: white;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+    transition: 0.3s ease;
+}
+
+.close-modal:hover {
+    background: #267bff;
+
+    transform: rotate(90deg);
+}
+
+.modal-icon {
+    font-size: 38px;
+
+    margin-bottom: 15px;
+}
+
+.modal h2 {
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.modal > p {
+    color: #8297b2;
+
+    font-size: 14px;
+
+    margin-bottom: 25px;
+}
+
+.modal form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.modal input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid rgba(100, 130, 170, 0.25);
+
+    outline: none;
+
+    background: #15263d;
+
+    color: white;
+
+    transition: 0.3s ease;
+}
+
+.modal input:focus {
+    border-color: #3485ff;
+
+    box-shadow:
+        0 0 15px rgba(40, 120, 255, 0.15);
+}
+
+.modal-submit {
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1468ff,
+            #2986ff
+        );
+
+    color: white;
+
+    font-weight: 700;
+
+    margin-top: 5px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.modal-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(20, 100, 255, 0.35);
+}
+
+
+/* =========================================================
+   SEARCH RESULT STATE
+========================================================= */
+
+.search-result-message {
+    text-align: center;
+
+    color: #86a1bf;
+
+    padding: 25px 10px;
+
+    font-size: 14px;
+
+    animation:
+        fadeResult 0.4s ease;
+}
+
+@keyframes fadeResult {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .nav-links {
+        margin-right: 80px;
+    }
+
+    .hero-container {
+        gap: 30px;
+    }
+
+    .hero-title {
+        font-size: 50px;
+    }
+
+    .verified-badge {
+        right: -5px;
+    }
+
+    .location-badge {
+        left: -5px;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 130px;
+        padding-bottom: 70px;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .hero-content {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .hero-description {
+        max-width: 650px;
+    }
+
+    .stats-container {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 450px;
+    }
+
+    .hostel-card {
+        width: 600px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .nav-container {
+        height: 78px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+
+    .login-btn {
+        display: none;
+    }
+
+    .signup-btn {
+        padding: 11px 16px;
+
+        font-size: 13px;
+    }
+
+    .hero {
+        padding-top: 115px;
+    }
+
+    .hero-title {
+        font-size: 40px;
+
+        letter-spacing: -1.5px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: min(280px, 100%);
+
+        justify-content: center;
+    }
+
+    .stats-container {
+        gap: 25px;
+    }
+
+    .stat-number {
+        font-size: 19px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .hero-visual {
+        min-height: 400px;
+    }
+
+    .hostel-card {
+        padding: 15px;
+
+        border-radius: 18px;
+    }
+
+    .search-box {
+        height: 55px;
+    }
+
+    .hostel-item {
+        padding: 12px;
+
+        gap: 10px;
+    }
+
+    .hostel-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 22px;
+    }
+
+    .hostel-info h3 {
+        font-size: 13px;
+    }
+
+    .hostel-info p {
+        font-size: 10px;
+    }
+
+    .hostel-price strong {
+        font-size: 12px;
+    }
+
+    .hostel-price span {
+        font-size: 10px;
+    }
+
+    .verified-badge {
+        top: 5px;
+        right: -5px;
+
+        padding: 8px 10px;
+    }
+
+    .location-badge {
+        bottom: 0;
+        left: -5px;
+
+        padding: 8px 10px;
+    }
+
+    .badge-check,
+    .location-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .floating-badge strong {
+        font-size: 11px;
+    }
+
+    .floating-badge span {
+        font-size: 9px;
+    }
+
+    .simple-section {
+        padding: 80px 0;
+    }
+
+    .section-container h2 {
+        font-size: 32px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .stats-container {
+        gap: 16px;
+    }
+
+    .stat-number {
+        font-size: 16px;
+    }
+
+    .hostel-price {
+        display: none;
+    }
+
+}
